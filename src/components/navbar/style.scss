@@ -1,0 +1,97 @@
+.nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 13px 25px;
+    box-shadow: 0 2px 4px 0 #00000033;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: background-color 0.3s, opacity 0.3s ease-in-out;
+    transition: 0.3s;
+
+    &.scrolled {
+        opacity: 0.95;
+        padding: 5px 25px;
+    }
+
+    &.scrolled .logoImg {
+        width: 45px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+            width: 50px;
+            transition: 0.3s;
+        }
+
+        h1 {
+            font-size: 25px;
+        }
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        li {
+            font-size: 20px;
+            position: relative;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            // color: #aaaaaa;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: gray;
+                /* Chiziqning rangi */
+                transition: width 0.3s ease;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
+
+            &.checked {
+                color: blue;
+                /* Li element qizil bo'lishi */
+            }
+
+            &.checked::after {
+                background-color: blue;
+                /* Chiziqni qizil qilish */
+            }
+        }
+    }
+
+    .end {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .dropdown:hover .gear {
+            transform: rotate(40deg);
+        }
+
+        .gear {
+            transition: 0.5s;
+            font-size: 25px;
+        }
+    }
+}
