@@ -1,0 +1,306 @@
+.show {
+    height: 90vh;
+    gap: 100px;
+    padding: 0 40px;
+    padding-top: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 12px;
+
+        h1 {
+            font-size: 50px;
+            font-weight: 600;
+        }
+    }
+
+    .carousel {
+        width: 500px;
+        height: 580px;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 3px 3px 10px #00000066;
+
+        .carBox {
+            height: 580px;
+            overflow: hidden;
+
+            img {
+                height: 580px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1370px) {
+    .show {
+        padding-bottom: 28px;
+        padding-top: 160px;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 12px;
+
+            h1 {
+                font-size: 50px;
+                font-weight: 600;
+            }
+        }
+
+        .carousel {
+            width: 470px;
+            height: 580px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 3px 3px 10px #00000066;
+
+            .carBox {
+                height: 580px;
+                overflow: hidden;
+
+                img {
+                    height: 580px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    .show {
+        padding: 0 20px;
+        padding-bottom: 28px;
+        padding-top: 160px;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 10px;
+
+            h1 {
+                font-size: 40px;
+                font-weight: 600;
+            }
+        }
+
+        .carousel {
+            width: 400px;
+            height: 590px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 3px 3px 10px #00000066;
+
+            .carBox {
+                height: 590px;
+                overflow: hidden;
+
+                img {
+                    height: 590px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    .show {
+        padding-bottom: 40px;
+        padding-top: 170px;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 10px;
+
+            h1 {
+                font-size: 30px;
+                font-weight: 600;
+            }
+
+            p {
+                font-size: 13px;
+            }
+        }
+
+        .carousel {
+            width: 350px;
+            height: 550px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 3px 3px 10px #00000066;
+
+            .carBox {
+                height: 590px;
+                overflow: hidden;
+
+                img {
+                    height: 590px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .show {
+        padding: 0;
+        padding-bottom: 0px;
+        padding-top: 59px;
+        height: 100vh;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+            align-items: center;
+            gap: 10px;
+            border-radius: 20px;
+            padding: 20px 10px;
+
+            h6 {
+                color: white;
+            }
+
+            h1 {
+                font-size: 35px;
+                font-weight: 600;
+                text-align: center;
+                color: white;
+            }
+
+            p {
+                font-size: 15px;
+                text-align: center;
+                color: white;
+            }
+        }
+
+        .carouselBox {
+            width: 100%;
+            height: 91vh;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 91vh;
+            overflow: hidden;
+            border-radius: 0px;
+            box-shadow: 3px 3px 10px #00000066;
+
+            .carBox {
+                height: 91vh;
+                overflow: hidden;
+                position: relative;
+
+                img {
+                    height: 91vh;
+                    object-fit: cover;
+                    // filter: brightness(70%);
+                    /* Rasmlarni qoraroq qiladi */
+                    transition: filter 0.3s ease;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 470px) {
+    .show {
+        padding: 0;
+        padding-bottom: 0px;
+        padding-top: 59px;
+        height: 100vh;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+            align-items: center;
+            gap: 7px;
+            border-radius: 20px;
+            padding: 20px 10px;
+
+            h6 {
+                color: white;
+            }
+
+            h1 {
+                margin: 10px 0;
+                font-size: 35px;
+                font-weight: 600;
+                text-align: center;
+                color: white;
+                flex-direction: column;
+                line-height: 29px;
+            }
+
+            p {
+                font-size: 15px;
+                text-align: center;
+                color: white;
+            }
+        }
+
+        .carouselBox {
+            width: 100%;
+            height: 91vh;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 91vh;
+            overflow: hidden;
+            border-radius: 0px;
+            box-shadow: 3px 3px 10px #00000066;
+
+            .carBox {
+                height: 91vh;
+                overflow: hidden;
+                position: relative;
+
+                img {
+                    height: 91vh;
+                    object-fit: cover;
+                    transition: filter 0.3s ease;
+                }
+            }
+        }
+    }
+}

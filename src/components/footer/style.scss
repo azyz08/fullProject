@@ -1,0 +1,14 @@
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+        width: 50px;
+        transition: 0.3s;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+}
