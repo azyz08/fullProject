@@ -141,9 +141,13 @@ export default function Navbar() {
                                     }`}
                             ></i>
                         </label>
-                        <Button className="logOut capitalize bg-red-500 px-[14px] py-[7px] text-[15px] font-thin">
-                            Log in
-                        </Button>
+                        <div className="flex items-center gap-2">
+                            <Link to={"/login"}>
+                                <Button className="logOut capitalize bg-red-500 px-[14px] py-[7px] text-[15px] font-thin">
+                                    Log in
+                                </Button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
                 <ul className="ul2">
@@ -154,12 +158,16 @@ export default function Navbar() {
                         <li className={isActive("/products")}>Products</li>
                     </Link>
                     <div className="btns flex items-center w-full gap-4 mt-2">
-                        <Button className="logOut2 w-full capitalize bg-red-500 px-[14px] py-[7px] text-[15px] font-thin">
-                            Log in
-                        </Button>
-                        <Button className="logOut2 w-full capitalize bg-red-500 px-[14px] py-[7px] text-[15px] font-thin">
-                            Sign up
-                        </Button>
+                        <Link className="w-full" to={"/login"}>
+                            <Button className="logOut2 w-full capitalize bg-red-500 px-[14px] py-[7px] text-[15px] font-thin">
+                                Log in
+                            </Button>
+                        </Link>
+                        <Link className="w-full" to={"/register"}>
+                            <Button className="logOut2 w-full capitalize border-red-500 border-[2px] bg-transparent px-[14px] py-[5px] text-[15px] font-thin">
+                                Sign up
+                            </Button>
+                        </Link>
                     </div>
                 </ul>
             </div>

@@ -1,7 +1,7 @@
 .show {
     height: 90vh;
     gap: 100px;
-    padding: 0 40px;
+    padding: 0 100px;
     padding-top: 130px;
     display: flex;
     align-items: center;
@@ -37,6 +37,41 @@
     }
 }
 
+.four {
+    margin-top: 50px;
+    padding: 80px 0;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px 20px;
+
+    .counter {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        img {
+            width: 70px;
+        }
+
+        span {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+
+            h1 {
+                font-size: 30px;
+            }
+
+            p {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+
 @media (max-width: 1370px) {
     .show {
         padding-bottom: 28px;
@@ -53,13 +88,13 @@
             gap: 12px;
 
             h1 {
-                font-size: 50px;
+                font-size: 40px;
                 font-weight: 600;
             }
         }
 
         .carousel {
-            width: 470px;
+            width: 440px;
             height: 580px;
             overflow: hidden;
             border-radius: 20px;
@@ -232,6 +267,40 @@
             }
         }
     }
+
+    .four {
+        margin-top: 10px;
+        padding: 50px 0;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px 20px;
+
+        .counter {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            img {
+                width: 70px;
+            }
+
+            span {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+
+                h1 {
+                    font-size: 30px;
+                }
+
+                p {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 470px) {
@@ -299,6 +368,40 @@
                     height: 91vh;
                     object-fit: cover;
                     transition: filter 0.3s ease;
+                }
+            }
+        }
+    }
+
+    .four {
+        margin-top: 10px;
+        padding: 50px 0;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px 20px;
+
+        .counter {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            img {
+                width: 60px;
+            }
+
+            span {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+
+                h1 {
+                    font-size: 25px;
+                }
+
+                p {
+                    font-size: 18px;
                 }
             }
         }

@@ -3,10 +3,45 @@ import "./style.scss"
 import { Carousel } from 'antd';
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
-
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 export default function Home() {
     const { t } = useTranslation();
+    const [counters, setCounters] = useState([
+        { id: 1, count: 0, target: 1532 }, // Visit count target
+        { id: 2, count: 0, target: 1223 }, // Sold products target
+        { id: 3, count: 0, target: 998 },  // Happy customers target
+        { id: 4, count: 0, target: 80 },  // Thank you notes target
+    ]);
+
+    const { ref, inView } = useInView({
+        triggerOnce: true, // Trigger only once
+        threshold: 0.1, // The counter starts when 10% is visible
+    });
+
+    useEffect(() => {
+        if (inView) {
+            const intervals = counters.map((counter, index) => {
+                let currentCount = 0;
+                return setInterval(() => {
+                    currentCount += 1;
+                    setCounters((prevCounters) =>
+                        prevCounters.map((prevCounter, prevIndex) =>
+                            prevIndex === index
+                                ? { ...prevCounter, count: Math.min(prevCounter.count + 10, prevCounter.target) }
+                                : prevCounter
+                        )
+                    );
+                    if (currentCount >= counter.target) {
+                        clearInterval(intervals[index]);
+                    }
+                }, 30); // Interval speed (100ms)
+            });
+
+            return () => intervals.forEach(interval => clearInterval(interval));
+        }
+    }, [inView, counters]);
 
     return (
         <>
@@ -39,6 +74,55 @@ export default function Home() {
                                 <img className="brightness-[90%] duration-300 dark:brightness-[65%]" src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-mountain-scenery-with-flowers-free-photo.jpg?w=600&quality=80" alt="" />
                             </div>
                         </Carousel>
+                    </div>
+                </div>
+            </div>
+
+            <div className="pages">
+                <div className="four">
+                    <div className="counter">
+                        <img
+                            className="counterImg1" // Specific class for visit image
+                            src="/visit.png"
+                            alt="Visit count"
+                        />
+                        <span>
+                            <h1 ref={ref}>{counters[0].count}</h1>
+                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">Saytga tashriflar</p>
+                        </span>
+                    </div>
+                    <div className="counter">
+                        <img
+                            className="counterImg2" // Specific class for sold products image
+                            src="/sold.png"
+                            alt="Sold products"
+                        />
+                        <span>
+                            <h1 ref={ref}>{counters[1].count}</h1>
+                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">Sotilgan mahsulotlar</p>
+                        </span>
+                    </div>
+                    <div className="counter">
+                        <img
+                            className="counterImg3" // Specific class for happy customers image
+                            src="/happy.png"
+                            alt="Happy customers"
+                        />
+                        <span>
+                            <h1 ref={ref}>{counters[2].count}</h1>
+                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">Xursand mijozlar</p>
+                        </span>
+                    </div>
+                    <div className="counter">
+                        <img
+                            className="counterImg4" // Specific class for thank you notes image
+                            src="/medal.png"
+                            alt="Thank you notes"
+                        />
+                        <span>
+                            <h1 ref={ref}>{counters[3].count}</h1>
+                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">Tashakkurnomalar</p>
+                        </span>
                     </div>
                 </div>
             </div>
