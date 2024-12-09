@@ -14,41 +14,41 @@ export default function Footer() {
                             <img className="logoImg" src="/logo.png" alt="" />
                             <h1>Logo</h1>
                         </Link>
-                        <p>Lorem ipsum dolor sit amet consectetur <br /> adipisicing elit. Aut, at?</p>
+                        <p className="dark:text-gray-500 duration-300 text-gray-600">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Aut, at?</p>
                     </div>
                     <ul className="links">
                         <b>Links</b>
-                        <Link className="footerLink" to={"/"}>Home</Link>
-                        <Link className="footerLink" to={"/products"}>Products</Link>
+                        <Link className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/"}>Home</Link>
+                        <Link className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/products"}>Products</Link>
                     </ul>
                     <div className="icons">
                         <Tooltip placement="left" title="Instagram">
-                            <a href="http://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                            <a className="duration-300 hover:text-[#E1306C]" href="http://instagram.com"><i class="fa-brands fa-instagram"></i></a>
                         </Tooltip>
                         <Tooltip placement="left" title="Facebook">
-                            <a href="https://facebook.com/"><i class="fa-brands fa-square-facebook"></i></a>
+                            <a className="duration-300 hover:text-[#1877F2]" href="https://facebook.com/"><i class="fa-brands fa-square-facebook"></i></a>
                         </Tooltip>
                         <Tooltip placement="left" title="Twitter">
-                            <a href="http://x.com"><i class="fa-brands fa-square-twitter"></i></a>
+                            <a className="duration-300 hover:text-[#1DA1F2]" href="http://x.com"><i class="fa-brands fa-square-twitter"></i></a>
                         </Tooltip>
                         <Tooltip placement="left" title="GitHub">
-                            <a href="http://github.com"><i class="fa-brands fa-square-github"></i></a>
+                            <a className="duration-300 hover:text-[#333] dark:hover:text-[white]" href="http://github.com"><i class="fa-brands fa-square-github"></i></a>
                         </Tooltip>
                     </div>
                 </div>
                 <div className="bot">
                     <div className="icons">
                         <Tooltip placement="top" title="Instagram">
-                            <a href="http://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                            <a className="duration-300 hover:text-[#E1306C]" href="http://instagram.com"><i class="fa-brands fa-instagram"></i></a>
                         </Tooltip>
                         <Tooltip placement="top" title="Facebook">
-                            <a href="https://facebook.com/"><i class="fa-brands fa-square-facebook"></i></a>
+                            <a className="duration-300 hover:text-[#1877F2]" href="https://facebook.com/"><i class="fa-brands fa-square-facebook"></i></a>
                         </Tooltip>
                         <Tooltip placement="top" title="Twitter">
-                            <a href="http://x.com"><i class="fa-brands fa-square-twitter"></i></a>
+                            <a className="duration-300 hover:text-[#1DA1F2]" href="http://x.com"><i class="fa-brands fa-square-twitter"></i></a>
                         </Tooltip>
                         <Tooltip placement="top" title="GitHub">
-                            <a href="http://github.com"><i class="fa-brands fa-square-github"></i></a>
+                            <a className="duration-300 hover:text-[#333] dark:hover:text-[white]" href="http://github.com"><i class="fa-brands fa-square-github"></i></a>
                         </Tooltip>
                     </div>
                 </div>

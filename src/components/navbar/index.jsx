@@ -73,9 +73,6 @@ export default function Navbar() {
                         <Link to={"/products"} className="text-[black] duration-300 dark:text-[white]">
                             <li className={isActive("/products")}>Products</li>
                         </Link>
-                        <Button className="logOut2 capitalize bg-red-500 px-[14px] py-[7px] text-[15px] font-thin">
-                            Log out
-                        </Button>
                     </ul>
                     <div className="end">
                         <Dropdown
@@ -141,10 +138,15 @@ export default function Navbar() {
                                     }`}
                             ></i>
                         </label>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-[7px]">
                             <Link to={"/login"}>
-                                <Button className="logOut capitalize bg-red-500 px-[14px] py-[7px] text-[15px] font-thin">
+                                <Button className="logOut text-black duration-300 dark:text-white normal-case border-blue-700 border-[1.5px] bg-transparent px-[14px] py-[5.5px] text-[15px] font-thin">
                                     Log in
+                                </Button>
+                            </Link>
+                            <Link to={"/register"}>
+                                <Button className="logOut normal-case bg-blue-700 px-[12px] py-[6px] text-[15px] font-thin">
+                                    Sign up
                                 </Button>
                             </Link>
                         </div>
@@ -157,14 +159,14 @@ export default function Navbar() {
                     <Link to={"/products"}>
                         <li className={isActive("/products")}>Products</li>
                     </Link>
-                    <div className="btns flex items-center w-full gap-4 mt-2">
+                    <div className="btns flex items-center w-full gap-2 mt-2">
                         <Link className="w-full" to={"/login"}>
-                            <Button className="logOut2 w-full capitalize bg-red-500 px-[14px] py-[7px] text-[15px] font-thin">
+                            <Button className="logOut text-black duration-300 dark:text-white w-full normal-case border-blue-700 border-[1.5px] bg-transparent px-[14px] py-[5.5px] text-[15px] font-thin">
                                 Log in
                             </Button>
                         </Link>
-                        <Link className="w-full" to={"/register"}>
-                            <Button className="logOut2 w-full capitalize border-red-500 border-[2px] bg-transparent px-[14px] py-[5px] text-[15px] font-thin">
+                        <Link className="w-full" to={"/regiter"}>
+                            <Button className="logOut w-full normal-case bg-blue-700 px-[12px] py-[6px] text-[15px] font-thin">
                                 Sign up
                             </Button>
                         </Link>

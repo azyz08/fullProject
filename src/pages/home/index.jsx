@@ -5,21 +5,22 @@ import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import Services from "../../components/services";
+import Contact from "../../components/contact";
 
 export default function Home() {
     const { t } = useTranslation();
+
     const [counters, setCounters] = useState([
         { id: 1, count: 0, target: 1532 }, // Visit count target
         { id: 2, count: 0, target: 1223 }, // Sold products target
         { id: 3, count: 0, target: 998 },  // Happy customers target
         { id: 4, count: 0, target: 80 },  // Thank you notes target
     ]);
-
     const { ref, inView } = useInView({
         triggerOnce: true, // Trigger only once
         threshold: 0.1, // The counter starts when 10% is visible
     });
-
     useEffect(() => {
         if (inView) {
             const intervals = counters.map((counter, index) => {
@@ -52,7 +53,7 @@ export default function Home() {
                         <h1 className="flex items-center gap-3"><span className="text-blue-500">Full Project</span> <h3>Website</h3></h1>
                         <p className="text-[gray]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br /> Ex sapiente temporibus aliquam consequatur quod cupiditate pariatur modi quasi, sequi mollitia.</p>
                         <div className="btns mt-3 flex items-center gap-5">
-                            <Link to={"register"}>
+                            <Link to={"/products"}>
                                 <Button className="capitalize bg-transparent py-2 text-[15px] font-thin bg-blue-700 border-none">
                                     Products
                                 </Button>
@@ -79,6 +80,8 @@ export default function Home() {
             </div>
 
             <div className="pages">
+                <Services />
+
                 <div className="four">
                     <div className="counter">
                         <img
@@ -125,6 +128,8 @@ export default function Home() {
                         </span>
                     </div>
                 </div>
+
+                <Contact />
             </div>
         </>
     )
