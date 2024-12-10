@@ -1,0 +1,895 @@
+.topH1 {
+    margin-top: 100px;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 45px;
+
+    .h62 {
+        display: none;
+    }
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 30px;
+        width: 50%;
+
+        .a1,
+        .a2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            &:hover i {
+                transform: translate(5px);
+            }
+
+            i {
+                transition: 0.2s;
+            }
+        }
+
+        h1 {
+            font-size: 55px;
+            font-weight: 600;
+            line-height: 35px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h6 {
+            color: gray;
+        }
+
+        .connect {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                i {
+                    font-size: 19px;
+                }
+            }
+        }
+
+        .userBox {
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            justify-content: space-between;
+            width: 100%;
+            height: 260px;
+
+            span {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 15px;
+
+                h2 {
+                    font-size: 35px;
+                    line-height: 48px;
+                }
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    &:hover i {
+                        transform: translate(5px);
+                    }
+
+                    i {
+                        transition: 0.2s;
+                    }
+                }
+            }
+
+            img {
+                height: 340px;
+                margin-top: -80px;
+            }
+        }
+
+        .a2 {
+            display: none;
+        }
+    }
+
+    .contactForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 40%;
+        padding: 45px 30px;
+        border-radius: 15px;
+
+        ::placeholder {
+            color: #b7b7b7;
+        }
+
+        span {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 3px;
+        }
+
+        .btns {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 1500px) {
+    .contact {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: 45px;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 30px;
+            width: 50%;
+
+            h1 {
+                font-size: 55px;
+                font-weight: 600;
+                line-height: 35px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+
+            h6 {
+                color: gray;
+            }
+
+            .connect {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+
+                    i {
+                        font-size: 19px;
+                    }
+                }
+            }
+
+            .userBox {
+                display: flex;
+                align-items: center;
+                padding-left: 40px;
+                justify-content: space-between;
+                width: 100%;
+                height: 260px;
+                margin-top: 20px;
+
+                span {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    gap: 15px;
+
+                    h2 {
+                        font-size: 35px;
+                        line-height: 48px;
+                    }
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        &:hover i {
+                            transform: translate(5px);
+                        }
+
+                        i {
+                            transition: 0.2s;
+                        }
+                    }
+                }
+
+                img {
+                    height: 300px;
+                    margin-top: -40px;
+                }
+            }
+        }
+
+        .contactForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 40%;
+            padding: 45px 30px;
+            border-radius: 15px;
+
+            span {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 3px;
+            }
+
+            .btns {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 1300px) {
+    .contact {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 45px;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 30px;
+            width: 50%;
+
+            h1 {
+                font-size: 45px;
+                font-weight: 600;
+                line-height: 30px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+
+            h6 {
+                color: gray;
+            }
+
+            .connect {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+
+                    i {
+                        font-size: 19px;
+                    }
+                }
+            }
+
+            .userBox {
+                display: flex;
+                align-items: center;
+                padding-left: 30px;
+                justify-content: space-between;
+                width: 100%;
+                height: 240px;
+                margin-top: 20px;
+
+                span {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    gap: 15px;
+
+                    h2 {
+                        font-size: 28px;
+                        line-height: 40px;
+                    }
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        &:hover i {
+                            transform: translate(5px);
+                        }
+
+                        i {
+                            transition: 0.2s;
+                        }
+                    }
+                }
+
+                img {
+                    height: 280px;
+                    margin-top: -40px;
+                }
+            }
+        }
+
+        .contactForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 45%;
+            padding: 45px 30px;
+            border-radius: 15px;
+
+            span {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 3px;
+            }
+
+            .btns {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    .contact {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 45px;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+            width: 50%;
+
+            h1 {
+                font-size: 37px;
+                font-weight: 600;
+                line-height: 17px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 10px;
+            }
+
+            h6 {
+                color: gray;
+                font-size: 14px;
+            }
+
+            .connect {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 13px;
+
+                    i {
+                        font-size: 17px;
+                    }
+                }
+            }
+
+            .userBox {
+                display: flex;
+                align-items: center;
+                padding-left: 30px;
+                justify-content: space-between;
+                width: 100%;
+                height: 220px;
+                margin-top: 20px;
+
+                span {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    gap: 15px;
+
+                    h2 {
+                        font-size: 23px;
+                        line-height: 30px;
+                    }
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        &:hover i {
+                            transform: translate(5px);
+                        }
+
+                        i {
+                            transition: 0.2s;
+                        }
+                    }
+                }
+
+                img {
+                    height: 260px;
+                    margin-top: -40px;
+                }
+            }
+        }
+
+        .contactForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 50%;
+            padding: 20px 30px;
+            border-radius: 15px;
+
+            span {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 3px;
+            }
+
+            .btns {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .contact {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 45px;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+            width: 50%;
+
+            h1 {
+                font-size: 37px;
+                font-weight: 600;
+                line-height: 17px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 10px;
+            }
+
+            h6 {
+                color: gray;
+                font-size: 14px;
+            }
+
+            .connect {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                justify-content: space-between;
+                width: 100%;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 13px;
+
+                    i {
+                        font-size: 15px;
+                    }
+                }
+            }
+
+            .userBox {
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+                justify-content: space-between;
+                width: 100%;
+                height: 220px;
+                margin-top: 20px;
+
+                span {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    gap: 15px;
+
+                    h2 {
+                        font-size: 19px;
+                        line-height: 30px;
+                    }
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        &:hover i {
+                            transform: translate(5px);
+                        }
+
+                        i {
+                            transition: 0.2s;
+                        }
+                    }
+                }
+
+                img {
+                    height: 260px;
+                    margin-top: -40px;
+                }
+            }
+        }
+
+        .contactForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 50%;
+            padding: 20px 30px;
+            border-radius: 15px;
+
+            span {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 3px;
+            }
+
+            .btns {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .topH1 {
+        margin-top: 100px;
+        display: none;
+    }
+
+    .contact {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        margin-top: 70px;
+        flex-direction: column;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+
+            h1 {
+                font-size: 47px;
+                font-weight: 600;
+                line-height: 30px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 10px;
+            }
+
+            h6 {
+                color: gray;
+                font-size: 17px;
+                text-align: center;
+                display: block;
+            }
+
+            .h61 {
+                display: none;
+            }
+
+            .connect {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 20px;
+
+                    i {
+                        font-size: 17px;
+                    }
+                }
+            }
+
+            .userBox {
+                display: none;
+            }
+
+            .a2 {
+                display: flex;
+            }
+        }
+
+        .contactForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            padding: 20px 30px;
+            border-radius: 15px;
+
+            span {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 3px;
+            }
+
+            .btns {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .topH1 {
+        margin-top: 100px;
+        display: none;
+    }
+
+    .contact {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        margin-top: 70px;
+        flex-direction: column;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+
+            h1 {
+                font-size: 40px;
+                font-weight: 600;
+                line-height: 17px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 10px;
+            }
+
+            h6 {
+                color: gray;
+                font-size: 17px;
+                text-align: center;
+                display: block;
+            }
+
+            .h61 {
+                display: none;
+            }
+
+            .connect {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 15px 30px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 20px;
+                    margin: 0 auto;
+
+                    i {
+                        font-size: 17px;
+                    }
+                }
+            }
+
+            .userBox {
+                display: flex;
+                align-items: center;
+                padding-left: 30px;
+                justify-content: space-between;
+                width: 100%;
+                height: 220px;
+                margin-top: 20px;
+                display: none;
+
+                span {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    gap: 15px;
+
+                    h2 {
+                        font-size: 23px;
+                        line-height: 30px;
+                    }
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        &:hover i {
+                            transform: translate(5px);
+                        }
+
+                        i {
+                            transition: 0.2s;
+                        }
+                    }
+                }
+
+                img {
+                    height: 260px;
+                    margin-top: -40px;
+                }
+            }
+        }
+
+        .contactForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            padding: 20px 30px;
+            border-radius: 15px;
+
+            span {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 3px;
+            }
+
+            .btns {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .topH1 {
+        margin-top: 100px;
+        display: none;
+    }
+
+    .contact {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        margin-top: 10px;
+        flex-direction: column;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+
+            h1 {
+                font-size: 27px;
+                font-weight: 600;
+                line-height: 7px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 10px;
+            }
+
+            h6 {
+                color: gray;
+                font-size: 15px;
+                text-align: center;
+                display: block;
+            }
+
+            .h61 {
+                display: none;
+            }
+
+            .connect {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 10px 10px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 17px;
+                    margin: 0 auto;
+
+                    i {
+                        font-size: 17px;
+                    }
+                }
+            }
+
+            .userBox {
+                display: none;
+            }
+        }
+
+        .contactForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            padding: 20px 20px;
+            border-radius: 15px;
+
+            span {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 3px;
+            }
+
+            .btns {
+                width: 100%;
+            }
+        }
+    }
+}
