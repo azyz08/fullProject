@@ -16,11 +16,18 @@ export default function Footer() {
                         </Link>
                         <p className="dark:text-gray-500 duration-300 text-gray-600">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Aut, at?</p>
                     </div>
-                    <ul className="links">
-                        <b>Links</b>
-                        <Link className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/"}>Home</Link>
-                        <Link className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/products"}>Products</Link>
-                    </ul>
+                    <div className="uls">
+                        <ul className="ul1">
+                            <b>Biz haqimizda</b>
+                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/"}>Topshirish punktlari</a>
+                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/products"}>Vakansiyalar</a>
+                        </ul>
+                        <ul className="ul2">
+                            <b>Aloqa</b>
+                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/"}>Biz bilan bog'lanish</a>
+                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/products"}>Savol-Javob</a>
+                        </ul>
+                    </div>
                     <div className="icons">
                         <Tooltip placement="left" title="Instagram">
                             <a className="duration-300 hover:text-[#E1306C]" href="http://instagram.com"><i class="fa-brands fa-instagram"></i></a>

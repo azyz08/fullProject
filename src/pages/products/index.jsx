@@ -1,9 +1,22 @@
+import Product from "../../components/product"
 import "./style.scss"
 
 export default function Products() {
     return (
         <>
-            <h1>Products</h1>
+            <div className="products">
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+            </div>
         </>
     )
 }
