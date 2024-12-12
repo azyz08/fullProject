@@ -1,13 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Home from "./pages/home";
-import Products from "./pages/products";
-import Profile from "./pages/profile";
 import Navbar from "./components/navbar";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import useMode from "./utils/zustand";
 import Footer from "./components/footer";
+import Products from "./pages/productsAll/products";
+import Profile from "./pages/profile";
+import UpdatePrd from "./pages/productsAll/updatePrd";
+import CreatePrd from "./pages/productsAll/createPrd";
+import ReadMore from "./pages/productsAll/readMore";
 
 export default function App() {
   const { darkMode } = useMode();
@@ -21,6 +24,9 @@ export default function App() {
         <div className="pages">
           <Routes>
             <Route path="/products" element={<Products />} />
+            <Route path="/update_product/:id" element={<UpdatePrd />} />
+            <Route path="/create_product" element={<CreatePrd />} />
+            <Route path="/read_more/:id" element={<ReadMore />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
