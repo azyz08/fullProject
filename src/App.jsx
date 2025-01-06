@@ -6,16 +6,16 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import useMode from "./utils/zustand";
 import Footer from "./components/footer";
-import Products from "./pages/productsAll/products";
+import Products from "./pages/products";
 import Profile from "./pages/profile";
-import ReadMore from "./pages/readMorePrd";
+import ReadMore from "./pages/readMore";
 
 export default function App() {
   const { darkMode } = useMode();
   return (
     <div className={`${darkMode ? "dark" : ""}`}>
-      <Navbar />
       <div className="site bg-[white] text-[black] duration-300 dark:bg-[#292929] dark:text-[white]">
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

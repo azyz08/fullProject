@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 998;
     transition: background-color 0.3s, opacity 0.3s ease-in-out;
     transition: 0.3s;
 
@@ -129,7 +129,7 @@
         top: 0;
         left: 0;
         right: 0;
-        z-index: 1000;
+        z-index: 998;
         transition: background-color 0.3s, opacity 0.3s ease-in-out;
         transition: 0.3s;
 
@@ -236,7 +236,7 @@
         top: 0;
         left: 0;
         right: 0;
-        z-index: 1000;
+        z-index: 998;
         transition: background-color 0.3s, opacity 0.3s ease-in-out;
         transition: 0.3s;
         height: 60px;
@@ -245,7 +245,6 @@
         &.scrolled {
             opacity: 0.94;
             padding: 7px 0;
-            box-shadow: 0 4px 7px 0 #00000053;
         }
 
         &.scrolled .logoImg {
@@ -309,7 +308,6 @@
             flex-direction: column;
             align-items: start;
             gap: 10px;
-            // box-shadow: 0 40px 7px 0 black;
 
             li {
                 font-size: 20px;
@@ -334,6 +332,7 @@
     #m:checked+.nav {
         height: 210px;
         box-shadow: 0 4px 7px 0 #00000053;
+        z-index: 1000;
     }
 
     .menu-label {
@@ -356,58 +355,5 @@
     .fa-xmark {
         color: red;
         /* X belgisi rangi */
-    }
-}
-
-@media (max-width: 470px) {
-    .nav {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 0px;
-        width: 100%;
-        padding: 7px 0px;
-        padding-bottom: 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        transition: background-color 0.3s, opacity 0.3s ease-in-out;
-        transition: 0.3s;
-        height: 55px;
-        overflow: hidden;
-
-        &.scrolled {
-            opacity: 0.94;
-            padding: 7px 0;
-            box-shadow: 0 4px 7px 0 #00000053;
-        }
-
-        &.scrolled .logoImg {
-            width: 40px;
-        }
-
-        &.scrolled .logo h1 {
-            font-size: 22px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            img {
-                width: 40px;
-                transition: 0.3s;
-            }
-
-            h1 {
-                font-size: 22px;
-                transition: 0.3s;
-            }
-        }
     }
 }
