@@ -6,12 +6,18 @@ import "../../utils/i18n";
 import { Link, useLocation } from "react-router-dom";
 import { Dropdown, Space } from "antd";
 import { Button } from "@material-tailwind/react";
+import { useCheckbox } from "../checkbox";
 
 export default function Navbar() {
     const { darkMode, toggleDarkMode } = useMode();
-    const { t, i18n } = useTranslation();
+    const { isChecked, setIsChecked } = useCheckbox();
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
+    const { t, i18n } = useTranslation();
+
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked);
+    };
 
     useEffect(() => {
         const savedLanguage = localStorage.getItem("language");
@@ -59,7 +65,7 @@ export default function Navbar() {
     };
     return (
         <>
-            <input type="checkbox" id="m" />
+            <input type="checkbox" id="m" checked={isChecked} onChange={handleCheckboxChange} />
             <div className={`nav ${scrolled ? "scrolled" : ""} text-black bg-[white] duration-300 dark:bg-[#292929] dark:text-white`}>
                 <div className="nav2">
                     <Link to={"/"} className="logo">

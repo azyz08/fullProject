@@ -8,8 +8,9 @@ import { useTranslation } from "react-i18next";
 import { Button, IconButton } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { Select, Dropdown, Space, Typography } from "antd";
-import { DownOutlined, SettingOutlined } from '@ant-design/icons';
+import { DownOutlined } from '@ant-design/icons';
 import "../../utils/i18n";
+import { useCheckbox } from '../../components/checkbox';
 
 export default function Products() {
     const [scrolled, setScrolled] = useState(false);
@@ -20,12 +21,13 @@ export default function Products() {
     const [take, setTake] = useState(10);
     const [active, setActive] = useState(1);
     const [query, setQuery] = useSearchParams();
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked2, setIsChecked2] = useState(false);
     const [checkedItem, setCheckedItem] = useState(null); // Checked elementni saqlash uchun state
+    const { isChecked } = useCheckbox();
     const currentLanguage = i18n.language;
 
     const handleToggle = () => {
-        setIsChecked(!isChecked);
+        setIsChecked2(!isChecked2);
     };
 
     useEffect(() => {
@@ -88,7 +90,12 @@ export default function Products() {
     return (
         <>
             <div className="all">
-                <div className={`ctgs ${scrolled ? "scrolled" : ""} bg-[white] duration-300 dark:bg-[#292929]`}>
+                <div className={`ctgs ${scrolled ? "scrolled" : ""} bg-[white] duration-300 dark:bg-[#292929]`}
+                    style={{
+                        // border: isChecked ? "2px solid red" : "none",
+                        zIndex: isChecked ? -1 : 999,
+                        // top: isChecked ? 0 : '60px',
+                    }}>
                     <div className="left">
                         <Dropdown
                             className='FiltrDropdown'
