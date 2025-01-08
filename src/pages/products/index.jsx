@@ -108,7 +108,7 @@ export default function Products() {
                                         key: '1',
                                         label: (
                                             <div className='flex items-center justify-between gap-4'>
-                                                <p className='text-[17px]'>White</p>
+                                                <p className='text-[17px]'>{t("white")}</p>
                                                 <div className='w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[white]'></div>
                                             </div>
                                         )
@@ -117,7 +117,7 @@ export default function Products() {
                                         key: '2',
                                         label: (
                                             <div className='flex items-center justify-between gap-4'>
-                                                <p className='text-[17px]'>Black</p>
+                                                <p className='text-[17px]'>{t("black")}</p>
                                                 <div className='w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[black]'></div>
                                             </div>
                                         )
@@ -126,7 +126,7 @@ export default function Products() {
                                         key: '3',
                                         label: (
                                             <div className='flex items-center justify-between gap-4'>
-                                                <p className='text-[17px]'>Blue</p>
+                                                <p className='text-[17px]'>{t("blue")}</p>
                                                 <div className='w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[blue]'></div>
                                             </div>
                                         )
@@ -135,7 +135,7 @@ export default function Products() {
                                         key: '4',
                                         label: (
                                             <div className='flex items-center justify-between gap-4'>
-                                                <p className='text-[17px]'>Yellow</p>
+                                                <p className='text-[17px]'>{t("yellow")}</p>
                                                 <div className='w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[yellow]'></div>
                                             </div>
                                         )
@@ -144,7 +144,7 @@ export default function Products() {
                                         key: '5',
                                         label: (
                                             <div className='flex items-center justify-between gap-4'>
-                                                <p className='text-[17px]'>Red</p>
+                                                <p className='text-[17px]'>{t("red")}</p>
                                                 <div className='w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[red]'></div>
                                             </div>
                                         )

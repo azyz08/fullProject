@@ -2,8 +2,11 @@ import "./style.scss"
 import React, { useState } from 'react';
 import { Input } from 'antd';
 import { Button } from "@material-tailwind/react";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
+    const { t } = useTranslation();
+
     const [formData, setFormData] = useState({
         name: '',
         lastName: '',
@@ -23,7 +26,7 @@ export default function Contact() {
     };
     return (
         <>
-            <h1 class="topH1 text-black duration-300 dark:text-white text-[2.5rem] md:text-5xl xl:text-5xl font-semibold max-w-3xl mx-auto leading-snug text-center">Contact</h1>
+            <h1 class="topH1 text-black duration-300 dark:text-white text-[2.5rem] md:text-5xl xl:text-5xl font-semibold max-w-3xl mx-auto leading-snug text-center">{t("contact")}</h1>
             <div className="contact">
                 <div className="text">
                     <h1>Connect with our </h1>
@@ -55,64 +58,64 @@ export default function Contact() {
                 </div>
                 <form className="contactForm shadow-[2px_2px_10px_#dbdbdbac] duration-300 dark:shadow-[2px_2px_10px_#1c1c1c]">
                     <span>
-                        <label className="" htmlFor="ism">Name:</label>
+                        <label className="" htmlFor="ism">{t("name")}:</label>
                         <Input
                             className="text-black duration-300 dark:text-white dark:bg-gray-800 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
                             id="ism"
-                            placeholder="Name"
+                            placeholder={t("name")}
                             required
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         />
                     </span>
                     <span>
-                        <label className="" htmlFor="last">Last name:</label>
+                        <label className="" htmlFor="last">{t("sure")}:</label>
                         <Input
                             className="text-black duration-300 dark:text-white dark:bg-gray-800 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
                             id="last"
-                            placeholder="Last name"
+                            placeholder={t("sure")}
                             required
                             value={formData.lastName}
                             onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                         />
                     </span>
                     <span>
-                        <label className="" htmlFor="email">Email:</label>
+                        <label className="" htmlFor="email">{t("email")}:</label>
                         <Input
                             className="text-black duration-300 dark:text-white dark:bg-gray-800 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
                             id="email"
                             type="email"
-                            placeholder="Email"
+                            placeholder={t("email")}
                             value={formData.email}
                             required
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         />
                     </span>
                     <span>
-                        <label className="" htmlFor="phone">Phone:</label>
+                        <label className="" htmlFor="phone">{t("phone")}:</label>
                         <Input
                             className="text-black duration-300 dark:text-white dark:bg-gray-800 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
                             id="phone"
                             required
-                            placeholder="Phone number"
+                            placeholder={t("phoneNmbr")}
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         />
                     </span>
                     <span>
-                        <label className="" htmlFor="message">Message:</label>
+                        <label className="" htmlFor="message">{t("message")}:</label>
                         <Input.TextArea
                             className="text-black duration-300 dark:text-white dark:bg-gray-800 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
                             id="message"
                             required
-                            placeholder="Message"
+                            placeholder={t("message")}
                             value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         />
                     </span>
                     <div className="btns flex items-center gap-2">
-                        <Button type="submit" className="normal-case text-[16px] py-[5px] w-full font-thin mt-1 bg-blue-500" onClick={resetForm}>Send</Button>
-                        <Button type="button" className="normal-case text-[16px] py-[5px] w-full font-thin mt-1 bg-red-700" onClick={resetForm}>Reset</Button>
+                        <Button type="submit" className="normal-case text-[16px] py-[5px] w-full font-thin mt-1 bg-blue-500" onClick={resetForm}>{t("send")}</Button>
+                        <Button type="button" className="normal-case text-[16px] py-[5px] w-full font-thin mt-1 bg-red-700" onClick={resetForm}>{t("reset")}</Button>
                     </div>
                 </form>
             </div>

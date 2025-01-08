@@ -91,7 +91,7 @@ export default function Home() {
                         />
                         <span>
                             <h1 ref={ref}>{counters[0].count}</h1>
-                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">Saytga tashriflar</p>
+                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">{t("visits")}</p>
                         </span>
                     </div>
                     <div className="counter">
@@ -102,7 +102,7 @@ export default function Home() {
                         />
                         <span>
                             <h1 ref={ref}>{counters[1].count}</h1>
-                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">Sotilgan mahsulotlar</p>
+                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">{t("sold")}</p>
                         </span>
                     </div>
                     <div className="counter">
@@ -113,7 +113,7 @@ export default function Home() {
                         />
                         <span>
                             <h1 ref={ref}>{counters[2].count}</h1>
-                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">Xursand mijozlar</p>
+                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">{t("happy")}</p>
                         </span>
                     </div>
                     <div className="counter">
@@ -124,7 +124,7 @@ export default function Home() {
                         />
                         <span>
                             <h1 ref={ref}>{counters[3].count}</h1>
-                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">Tashakkurnomalar</p>
+                            <p className="text-[#686868] duration-300 dark:text-[#c5c5c5]">{t("notes")}</p>
                         </span>
                     </div>
                 </div>

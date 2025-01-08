@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom"
 import "./style.scss"
 import { Button, ConfigProvider, Flex, Tooltip } from 'antd';
+import { useTranslation } from "react-i18next";
 const text = <span>prompt text</span>;
 const buttonWidth = 80;
 
 export default function Footer() {
+    const { t } = useTranslation();
+
     return (
         <>
             <div className="footer bg-[#f4f4f4] duration-300 dark:bg-[#2d2d2d]">
@@ -18,14 +21,14 @@ export default function Footer() {
                     </div>
                     <div className="uls">
                         <ul className="ul1">
-                            <b>Biz haqimizda</b>
-                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/"}>Topshirish punktlari</a>
-                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/products"}>Vakansiyalar</a>
+                            <b>{t("about")}</b>
+                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/"}>{t("punkt")}</a>
+                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/products"}>{t("vakan")}</a>
                         </ul>
                         <ul className="ul2">
-                            <b>Aloqa</b>
-                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/"}>Biz bilan bog'lanish</a>
-                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/products"}>Savol-Javob</a>
+                            <b>{t("contact")}</b>
+                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/"}>{t("cantactUs")}</a>
+                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/products"}>{t("answer")}</a>
                         </ul>
                     </div>
                     <div className="icons">
