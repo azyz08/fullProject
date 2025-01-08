@@ -74,10 +74,10 @@ export default function Navbar() {
                     </Link>
                     <ul className="ul1">
                         <Link to={"/"}>
-                            <li className={isActive("/")}>Home</li>
+                            <li className={isActive("/")}>{t("home")}</li>
                         </Link>
                         <Link to={"/products"} className="text-[black] duration-300 dark:text-[white]">
-                            <li className={isActive("/products")}>Products</li>
+                            <li className={isActive("/products")}>{t("prd")}</li>
                         </Link>
                     </ul>
                     <div className="end">
@@ -88,16 +88,21 @@ export default function Navbar() {
                                 <div className="control flex flex-col items-start gap-2 py-[10px] px-[10px] w-[200px] h-[155px] rounded-2xl shadow-xl bg-[#f1f1f1] duration-300 dark:bg-[black]">
                                     <Button className="capitalize shadow-xl bg-white duration-300 dark:bg-[#272727] font-thin flex items-center justify-between w-full gap-1 py-1 px-3 rounded-md">
                                         <Link className="profileLink flex items-center text-black duration-300 dark:text-black justify-between w-full" to={"/profile"}>
-                                            <p className="text-[18px] text-black duration-300 dark:text-white">Profile</p>
+                                            <p className="text-[18px] text-black duration-300 dark:text-white">{t("profile")}</p>
                                             <div className="imgBox overflow-hidden rounded-[50%] w-[30px] h-[30px] flex items-center justify-center">
                                                 <img className="profileImg w-[50px] h-[50px] object-cover" src="/user.jpg" alt="Profile" />
                                             </div>
                                         </Link>
                                     </Button>
-                                    <Button className="capitalize bg-white duration-300 dark:bg-[#272727] font-thin flex items-center justify-between w-full gap-1 py-3 px-3 rounded-md">
-                                        <label className="text-black duration-300 flex gap-2 dark:text-white cursor-pointer">
-                                            <p className="text-[18px]">Light</p>
+                                    <Button className="capitalize bg-white duration-300 dark:bg-[#272727] font-thin flex items-center justify-between w-full py-0 px-0 rounded-md">
+                                        <label className={`text-black flex gap-2 dark:text-white cursor-pointer pl-[11px] pr-0 py-[10px] duration-0 w-full ${!darkMode ? 'border-t-blue-500 border-t-[2px] rounded-l-lg' : ''}`}>
+                                            <p
+                                                className={`text-[17px] ${!darkMode ? 'text-blue-500' : ''}`}
+                                            >
+                                                {t("light")}
+                                            </p>
                                             <input
+                                                className="hidden"
                                                 type="radio"
                                                 name="theme"
                                                 value="light"
@@ -105,9 +110,15 @@ export default function Navbar() {
                                                 onChange={handleThemeChange}
                                             />
                                         </label>
-                                        <label className="text-black duration-300 flex gap-1 dark:text-white cursor-pointer">
-                                            <p className="text-[18px]">Dark</p>
+                                        <div className="bg-gray-500 h-[20px] w-[1px] mx-1"></div>
+                                        <label className={`text-black flex gap-2 dark:text-white cursor-pointer pr-[11px] pl-0 py-[10px] duration-0 w-full flex-col items-end ${darkMode ? 'border-t-blue-500 border-t-[2px] rounded-r-lg' : ''}`}>
+                                            <p
+                                                className={`text-[17px] ${darkMode ? 'text-blue-500' : ''}`}
+                                            >
+                                                {t("dark")}
+                                            </p>
                                             <input
+                                                className="hidden"
                                                 type="radio"
                                                 name="theme"
                                                 value="dark"
@@ -117,7 +128,7 @@ export default function Navbar() {
                                         </label>
                                     </Button>
                                     <Button className="capitalize bg-white duration-300 dark:bg-[#272727] font-thin flex items-center justify-between w-full gap-1 py-[6.3px] px-3 rounded-md">
-                                        <p className="text-[18px] text-black duration-300 dark:text-white">Translate</p>
+                                        <p className="text-[18px] text-black duration-300 dark:text-white">{t('translate')}</p>
                                         <select
                                             className="border-[1px] rounded-[5px] pt-[1px] pb-[1px] bg-white cursor-pointer border-[blue] text-[#121212] focus:outline-none text-[18px]"
                                             value={i18n.language}
@@ -160,10 +171,10 @@ export default function Navbar() {
                 </div>
                 <ul className="ul2">
                     <Link to={"/"}>
-                        <li className={isActive("/")}>Home</li>
+                        <li className={isActive("/")}>{t("home")}</li>
                     </Link>
                     <Link to={"/products"}>
-                        <li className={isActive("/products")}>Products</li>
+                        <li className={isActive("/products")}>{t("prd")}</li>
                     </Link>
                     <div className="btns flex items-center w-full gap-2 mt-2">
                         <Link className="w-full" to={"/login"}>

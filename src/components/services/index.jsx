@@ -1,9 +1,12 @@
+import { useTranslation } from "react-i18next";
 import "./style.scss"
 
 export default function Services() {
+    const { t } = useTranslation();
+
     return (
         <div className="services">
-            <h1 class="text-black duration-300 dark:text-white text-[2.5rem] md:text-5xl xl:text-5xl font-semibold max-w-3xl mx-auto leading-snug text-center">Services</h1>
+            <h1 class="text-black duration-300 dark:text-white text-[2.5rem] md:text-5xl xl:text-5xl font-semibold max-w-3xl mx-auto leading-snug text-center">{t("services")}</h1>
             <div class="mt-[30px] grid-offer text-left grid sm:grid-cols-2 md:grid-cols-2 gap-5 w-full mx-auto">
                 <div class="card bg-gray-100 duration-300 dark:bg-gray-800 p-10 relative">
                     <div class="circle">

@@ -49,13 +49,13 @@ export default function Home() {
             <div className="bigShow">
                 <div className="show">
                     <div className="text">
-                        <h6>About us</h6>
+                        <h6 className="text-[18px]">{t("about")}</h6>
                         <h1 className="flex items-center gap-3"><span className="text-blue-500">Full Project</span> <h3>Website</h3></h1>
                         <p className="text-[gray]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br /> Ex sapiente temporibus aliquam consequatur quod cupiditate pariatur modi quasi, sequi mollitia.</p>
                         <div className="btns mt-3 flex items-center gap-5">
                             <Link to={"/products"}>
-                                <Button className="capitalize bg-transparent py-2 text-[15px] font-thin bg-blue-700 border-none">
-                                    Products
+                                <Button className="prdBtn capitalize bg-transparent py-2 px-4 flex items-center gap-[6px] text-[15px] font-thin bg-blue-700 border-none">
+                                    {t("prd")} <i class="fa-solid fa-angle-right prdRight"></i>
                                 </Button>
                             </Link>
                         </div>

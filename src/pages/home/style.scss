@@ -17,6 +17,16 @@
             font-size: 50px;
             font-weight: 600;
         }
+
+        .prdBtn {
+            &:hover .prdRight {
+                transform: translate(4px);
+            }
+
+            .prdRight {
+                transition: 0.2s;
+            }
+        }
     }
 
     .carousel {

@@ -90,94 +90,14 @@ export default function Products() {
                         zIndex: isChecked ? -1 : 999,
                     }}>
                     <div className="categories">
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 0 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(0)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://cdn-icons-png.flaticon.com/512/6781/6781224.png" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Elektronika</h1>
-                        </p>
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 1 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(1)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://static01.nyt.com/images/2024/06/30/books/books-flat-slide-FDQ7/books-flat-slide-FDQ7-articleLarge.png" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Maishiy texnika</h1>
-                        </p>
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 2 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(2)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://minapi.beemarket.uz/prod-media/productImages/1718190818XOpwYRQx5SKr.webp" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Kampyuterlar</h1>
-                        </p>
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 3 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(3)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://m.media-amazon.com/images/I/51w130WJUYL._AC_SL1000_.jpg" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Kiyimlar</h1>
-                        </p>
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 4 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(4)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://api.radius.uz/storage/products/July2023/HcXyAo3Ats7BlsVHa47P.jpg" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Aksessuarlar</h1>
-                        </p>
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 5 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(5)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://joybox.uz/wp-content/uploads/2024/03/smartfon-iphone-15-pro-max-512gb-natural-titanium-vna-1-sim.jpg" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Poyabzallar</h1>
-                        </p>
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 6 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(6)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://consumer.huawei.com/dam/content/dam/huawei-cbg-site/common/mkt/pdp/phones/p50-pro/list/black.png" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Xobbi va ijod</h1>
-                        </p>
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 7 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(7)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://consumer.huawei.com/dam/content/dam/huawei-cbg-site/common/mkt/pdp/phones/p50-pro/list/black.png" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Sport anjomlari</h1>
-                        </p>
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 6 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(6)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://consumer.huawei.com/dam/content/dam/huawei-cbg-site/common/mkt/pdp/phones/p50-pro/list/black.png" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Kitoblar</h1>
-                        </p>
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 7 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(7)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://consumer.huawei.com/dam/content/dam/huawei-cbg-site/common/mkt/pdp/phones/p50-pro/list/black.png" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Qurilish mollari</h1>
-                        </p>
-                        <p
-                            className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === 8 ? "checked" : ""}`}
-                            onClick={() => setCheckedItem(8)} >
-                            <div className="box">
-                                <img className='ctgImg' src="https://consumer.huawei.com/dam/content/dam/huawei-cbg-site/common/mkt/pdp/phones/p50-pro/list/black.png" alt="" />
-                            </div>
-                            <h1 className='whitespace-nowrap'>Oziq-ovqat mahsulotlari</h1>
-                        </p>
+                        {ctg.map((item) => (
+                            <p key={item?._id} className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === item?._id ? "checked" : ""}`} onClick={() => setCheckedItem(item._id)} >
+                                <div className="box">
+                                    <img className='ctgImg' src="https://cdn11.bigcommerce.com/s-rbv7yo926v/products/234/images/693/Motorola_-_Moto_G_Play_2024_64_GB_-_Sapphire_Blue__74751.1712166539.386.513.png?c=1" alt="" />
+                                </div>
+                                <h1 className='whitespace-nowrap'>{item?.[`name_${currentLanguage}`]}</h1>
+                            </p>
+                        ))}
                     </div>
                     <div className="left">
                         <Dropdown
@@ -257,7 +177,7 @@ export default function Products() {
                                     <div className="text">
                                         <h1>{l?.[`name_${currentLanguage}`]}</h1>
                                         <span>
-                                            <p className='text-[gray]'>Rangi:</p>
+                                            <p className='text-[gray]'>{t("color")}:</p>
                                             <div style={{ backgroundColor: l?.color }} className="color w-[50px] h-[20px] rounded-sm"></div>
                                         </span>
                                         <div className="bot">

@@ -1,3 +1,12 @@
 {
-    "filtr": "Filtr"
+    "filtr": "Filtr",
+    "color": "Rangi",
+    "home": "Bosh sahifa",
+    "prd": "Mahsulotlar",
+    "profile": "Profil",
+    "light": "Yorug'",
+    "dark": "Qorong'i",
+    "translate": "Tarjima",
+    "about": "About us",
+    "services": "Xizmatlar"
 }
