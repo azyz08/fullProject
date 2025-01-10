@@ -27,7 +27,7 @@ export default function Footer() {
                         </ul>
                         <ul className="ul2">
                             <b>{t("contact")}</b>
-                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/"}>{t("cantactUs")}</a>
+                            <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/"}>{t("us")}</a>
                             <a href="#" className="footerLink text-gray-800 hover:text-black duration-300 dark:text-gray-500 dark:hover:text-white" to={"/products"}>{t("answer")}</a>
                         </ul>
                     </div>

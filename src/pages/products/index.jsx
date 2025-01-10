@@ -11,6 +11,7 @@ import { Select, Dropdown, Space, Typography } from "antd";
 import { DownOutlined } from '@ant-design/icons';
 import "../../utils/i18n";
 import { useCheckbox } from '../../components/checkbox';
+import Skeleton from '../../components/skeleton';
 
 export default function Products() {
     const [scrolled, setScrolled] = useState(false);
@@ -23,6 +24,8 @@ export default function Products() {
     const [query, setQuery] = useSearchParams();
     const [checkedItem, setCheckedItem] = useState(null);
     const { isChecked } = useCheckbox();
+    const [loading, setLoading] = useState(false);
+    const [loadingCtg, setLoadingCtg] = useState(false);
     const currentLanguage = i18n.language;
 
     useEffect(() => {
@@ -64,15 +67,28 @@ export default function Products() {
     };
 
     useEffect(() => {
-        const categoryId = query.get('category');  // Get category from URL
-        const selectedColor = query.get('color'); // Get color from URL
+        setLoading(true); // Yuklanish holatini boshlash
+        const categoryId = query.get('category');
+        const selectedColor = query.get('color');
         const filterUrl = `/products/pagination?page=${active}&take=${take}${categoryId ? `&category=${categoryId}` : ''}${selectedColor ? `&color=${selectedColor}` : ''}`;
 
-        inctance.get(filterUrl).then((res) => setData(res?.data));
-    }, [active, take, query]); // Fetch products whenever pagination or category/color changes
+        inctance.get(filterUrl).then((res) => {
+            setData(res?.data);
+            setLoading(false); // Yuklanish tugadi
+        }).catch(() => {
+            setLoading(false); // Xatolikda yuklanishni tugatish
+        });
+    }, [active, take, query]);
+
 
     useEffect(() => {
-        inctance.get(`/category`).then((res) => setCtg(res?.data)); // Fetch categories
+        setLoadingCtg(true);
+        inctance.get(`/category`).then((res) => {
+            setCtg(res?.data);
+            setLoadingCtg(false);
+        }).catch(() => {
+            setLoadingCtg(false);
+        });
     }, []);
 
     const totalPages = Math.ceil(data?.total / take);
@@ -90,16 +106,35 @@ export default function Products() {
                         zIndex: isChecked ? -1 : 999,
                     }}>
                     <div className="categories">
-                        {ctg.map((item) => (
-                            <p key={item?._id} className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === item?._id ? "checked" : ""}`} onClick={() => setCheckedItem(item._id)} >
-                                <div className="box">
-                                    <img className='ctgImg' src="https://cdn11.bigcommerce.com/s-rbv7yo926v/products/234/images/693/Motorola_-_Moto_G_Play_2024_64_GB_-_Sapphire_Blue__74751.1712166539.386.513.png?c=1" alt="" />
+                        {loadingCtg ? (
+                            Array.from({ length: 8 }).map((_, index) => (
+                                <div key={index} className="category-item skeleton_category">
+                                    <span>
+                                        <div className="skeletonCard skeletonCtgImg"></div>
+                                        <div className="skeletonCard skeletonCtgText"></div>
+                                    </span>
                                 </div>
-                                <h1 className='whitespace-nowrap'>{item?.[`name_${currentLanguage}`]}</h1>
-                            </p>
-                        ))}
+                            ))
+                        ) : (
+                            ctg.map((item) => (
+                                <p key={item?._id}
+                                    className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === item?._id ? "checked" : ""}`}
+                                    onClick={() => setCheckedItem(item._id)}
+                                >
+                                    <div className="box">
+                                        <img
+                                            className="ctgImg"
+                                            src="https://cdn11.bigcommerce.com/s-rbv7yo926v/products/234/images/693/Motorola_-_Moto_G_Play_2024_64_GB_-_Sapphire_Blue__74751.1712166539.386.513.png?c=1"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <h1 className="whitespace-nowrap">{item?.[`name_${currentLanguage}`]}</h1>
+                                </p>
+                            ))
+                        )}
                     </div>
-                    <div className="left">
+
+                    <div className="left pb-[5px]">
                         <Dropdown
                             className='FiltrDropdown'
                             menu={{
@@ -153,6 +188,7 @@ export default function Products() {
                                 selectable: true,
                                 defaultSelectedKeys: ['3'],
                             }}
+
                         >
                             <Typography.Link>
                                 <Space className='space1 text-[18px] text-black duration-300 dark:text-white'>
@@ -166,32 +202,67 @@ export default function Products() {
                         </Dropdown>
                     </div>
                 </div>
-                <div className="right">
-                    <div className="products">
-                        {data?.data?.map((l) => (
-                            <Link key={l._id} to={"/read_more"}>
-                                <div className="product cursor-pointer shadow-[0_5px_10px_#c5c5c56b] dark:shadow-[0_4px_10px_#17171791] duration-300 hover:shadow-[0_6px_10px_#b0b0b06b] dark:hover:shadow-[0_4px_10px_#171717e0]">
-                                    <div className="imageBox">
-                                        <img src={`http://localhost:3000/file-upload/${l?.image}`} alt="" />
-                                    </div>
-                                    <div className="text">
-                                        <h1>{l?.[`name_${currentLanguage}`]}</h1>
-                                        <span>
-                                            <p className='text-[gray]'>{t("color")}:</p>
-                                            <div style={{ backgroundColor: l?.color }} className="color w-[50px] h-[20px] rounded-sm"></div>
+
+                <div className="right w-full">
+                    <div className='w-full'>
+                        {loading ? (
+                            <div className="skeleton-container w-[100%]">
+                                {Array.from({ length: take }).map((_, index) => (
+                                    <div key={index} className="skeleton flex w-[100%] items-start flex-col gap-3 cursor-pointer">
+                                        {/* <Skeleton width={"100%"} borderRadius={"8px"} height={"260px"} /> */}
+                                        <div className="skeletonCard skeleton_item"></div>
+                                        <Skeleton width={"100%"} borderRadius={"6px"} height={"20px"} />
+                                        <Skeleton width={"50%"} borderRadius={"6px"} height={"20px"} />
+                                        <span className="mt-[17px] flex items-center justify-between w-full">
+                                            <Skeleton width={"40%"} borderRadius={"6px"} height={"20px"} />
+                                            <Skeleton width={"35px"} borderRadius={"50%"} height={"35px"} />
                                         </span>
-                                        <div className="bot">
-                                            <div className="price">
-                                                <del className="text-gray-500">1 900 091</del>
-                                                {/* <p>{l?.price}</p> */}
-                                                <p>1 345 091 so'm</p>
-                                            </div>
-                                            <Link className="basket" to={"/products"}> <FontAwesomeIcon className="icon" icon={faCartPlus} /></Link>
-                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                        ))}
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="products">
+                                {data?.data?.map((l) => (
+                                    <Link key={l._id} to={"/read_more"}>
+                                        <div className="product cursor-pointer shadow-[0_5px_10px_#c5c5c56b] dark:shadow-[0_4px_10px_#17171791] duration-300 hover:shadow-[0_6px_10px_#b0b0b06b] dark:hover:shadow-[0_4px_10px_#171717e0]">
+                                            <div className="imageBox">
+                                                <img src={`http://localhost:3000/file-upload/${l?.image}`} alt="" />
+                                            </div>
+                                            <div className="text">
+                                                <div className="nameText">
+                                                    <h1>{l?.[`name_${currentLanguage}`]}</h1>
+                                                    <span>
+                                                        <p className="text-[gray]">{t("color")}:</p>
+                                                        <div
+                                                            style={{ backgroundColor: l?.color }}
+                                                            className="color w-[50px] h-[20px] rounded-sm"
+                                                        ></div>
+                                                    </span>
+                                                </div>
+                                                <div className="bot">
+                                                    <div className="price">
+                                                        <del className="text-gray-500">
+                                                            {Number(String(l?.price).replace(/\s/g, '') + 50) // Bosh joylarni olib tashlash va raqamga aylantirish
+                                                                .toLocaleString('en-US') // Raqamni formatlash
+                                                                .replace(/,/g, ' ')} {/* Vergulni bosh joy bilan almashtirish */}
+                                                        </del>
+                                                        <p>
+                                                            {Number(String(l?.price).replace(/\s/g, '')) // Bosh joylarni olib tashlash va raqamga aylantirish
+                                                                .toLocaleString('en-US') // Raqamni formatlash
+                                                                .replace(/,/g, ' ')} {/* Vergulni bosh joy bilan almashtirish */}
+                                                            so'm
+                                                        </p>
+                                                    </div>
+                                                    <Link className="basket" to={"/products"}>
+                                                        <FontAwesomeIcon className="icon" icon={faCartPlus} />
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     <div className="pagination">
@@ -200,14 +271,15 @@ export default function Products() {
                                 variant="text"
                                 className="flex text-black duration-300 dark:text-white items-center gap-2"
                                 onClick={prev}
-                                disabled={active === 1}
+                                disabled={loading || active === 1} // Yuklanayotgan paytda tugma ishlamaydi
                             >
-                                <ArrowLeftIcon strokeWidth={2} className="h-4 w-4 text-black duration-300 dark:text-white" /> <p className='texti'>Previous</p>
+                                <ArrowLeftIcon strokeWidth={2} className="h-4 w-4 text-black duration-300 dark:text-white" />
+                                <p>Previous</p>
                             </Button>
                             <div className="flex m-auto items-center gap-2">
                                 {Array.from({ length: totalPages }).map((_, index) => (
                                     <IconButton
-                                        className='text-black duration-300 dark:text-white'
+                                        className="text-black duration-300 dark:text-white"
                                         key={index + 1}
                                         {...getItemProps(index + 1)}
                                     >
@@ -219,25 +291,29 @@ export default function Products() {
                                 variant="text"
                                 className="flex text-black duration-300 dark:text-white items-center gap-2"
                                 onClick={next}
-                                disabled={active === totalPages}
+                                disabled={loading || active === totalPages} // Yuklanayotgan paytda tugma ishlamaydi
                             >
-                                <p className='texti'>Next</p>
+                                <p>Next</p>
                                 <ArrowRightIcon strokeWidth={2} className="h-4 w-4 text-black duration-300 dark:text-white" />
                             </Button>
                         </div>
-                        <Select
-                            value={take}
-                            onChange={setTake}
-                            className="custom-select"
-                            options={[
-                                { value: 5, label: "5" },
-                                { value: 10, label: "10" },
-                                { value: 15, label: "15" },
-                                { value: 20, label: "20" },
-                                { value: 25, label: "25" },
-                                { value: 30, label: "30" },
-                            ]}
-                        />
+
+                        {/* Select faqat active === 1 bo'lsa ko'rsatiladi */}
+                        {active === 1 && (
+                            <Select
+                                value={take}
+                                onChange={setTake}
+                                className="custom-select"
+                                options={[
+                                    { value: 5, label: "5" },
+                                    { value: 10, label: "10" },
+                                    { value: 15, label: "15" },
+                                    { value: 20, label: "20" },
+                                    { value: 25, label: "25" },
+                                    { value: 30, label: "30" },
+                                ]}
+                            />
+                        )}
                     </div>
                 </div>
             </div >
