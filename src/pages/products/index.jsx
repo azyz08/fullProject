@@ -67,18 +67,29 @@ export default function Products() {
     };
 
     useEffect(() => {
-        setLoading(true); // Yuklanish holatini boshlash
+        setLoading(true);
         const categoryId = query.get('category');
         const selectedColor = query.get('color');
         const filterUrl = `/products/pagination?page=${active}&take=${take}${categoryId ? `&category=${categoryId}` : ''}${selectedColor ? `&color=${selectedColor}` : ''}`;
 
         inctance.get(filterUrl).then((res) => {
             setData(res?.data);
-            setLoading(false); // Yuklanish tugadi
+            setLoading(false);
         }).catch(() => {
-            setLoading(false); // Xatolikda yuklanishni tugatish
+            setLoading(false);
         });
     }, [active, take, query]);
+
+    const handleCategoryClick = (id) => {
+        if (checkedItem === id) {
+            setCheckedItem(null); // Kategoriyani o‘chirish
+            query.delete('category');
+        } else {
+            setCheckedItem(id); // Kategoriyani tanlash
+            query.set('category', id);
+        }
+        window.history.replaceState(null, '', `?${query.toString()}`);
+    };
 
 
     useEffect(() => {
@@ -93,7 +104,6 @@ export default function Products() {
 
     const totalPages = Math.ceil(data?.total / take);
 
-    // Color filter handling
     const handleColorFilter = (color) => {
         setQuery({ color });
     };
@@ -117,9 +127,10 @@ export default function Products() {
                             ))
                         ) : (
                             ctg.map((item) => (
-                                <p key={item?._id}
+                                <p
+                                    key={item?._id}
                                     className={`category-item text-gray-700 dark:text-gray-400 ${checkedItem === item?._id ? "checked" : ""}`}
-                                    onClick={() => setCheckedItem(item._id)}
+                                    onClick={() => handleCategoryClick(item._id)}
                                 >
                                     <div className="box">
                                         <img
@@ -127,6 +138,7 @@ export default function Products() {
                                             src="https://cdn11.bigcommerce.com/s-rbv7yo926v/products/234/images/693/Motorola_-_Moto_G_Play_2024_64_GB_-_Sapphire_Blue__74751.1712166539.386.513.png?c=1"
                                             alt=""
                                         />
+                                        {/* <img src={`http://localhost:3000/file-upload/${item?.image}`} alt="" /> */}
                                     </div>
                                     <h1 className="whitespace-nowrap">{item?.[`name_${currentLanguage}`]}</h1>
                                 </p>
@@ -223,7 +235,7 @@ export default function Products() {
                         ) : (
                             <div className="products">
                                 {data?.data?.map((l) => (
-                                    <Link key={l._id} to={"/read_more"}>
+                                    <Link key={l._id} to={`/read_more/${l._id}`}>
                                         <div className="product cursor-pointer shadow-[0_5px_10px_#c5c5c56b] dark:shadow-[0_4px_10px_#17171791] duration-300 hover:shadow-[0_6px_10px_#b0b0b06b] dark:hover:shadow-[0_4px_10px_#171717e0]">
                                             <div className="imageBox">
                                                 <img src={`http://localhost:3000/file-upload/${l?.image}`} alt="" />
@@ -242,14 +254,14 @@ export default function Products() {
                                                 <div className="bot">
                                                     <div className="price">
                                                         <del className="text-gray-500">
-                                                            {Number(String(l?.price).replace(/\s/g, '') + 50) // Bosh joylarni olib tashlash va raqamga aylantirish
-                                                                .toLocaleString('en-US') // Raqamni formatlash
-                                                                .replace(/,/g, ' ')} {/* Vergulni bosh joy bilan almashtirish */}
+                                                            {Number(String(l?.price).replace(/\s/g, '') + 50)
+                                                                .toLocaleString('en-US')
+                                                                .replace(/,/g, ' ')}
                                                         </del>
                                                         <p>
-                                                            {Number(String(l?.price).replace(/\s/g, '')) // Bosh joylarni olib tashlash va raqamga aylantirish
-                                                                .toLocaleString('en-US') // Raqamni formatlash
-                                                                .replace(/,/g, ' ')} {/* Vergulni bosh joy bilan almashtirish */}
+                                                            {Number(String(l?.price).replace(/\s/g, ''))
+                                                                .toLocaleString('en-US')
+                                                                .replace(/,/g, ' ')}{" "}
                                                             so'm
                                                         </p>
                                                     </div>
@@ -262,6 +274,7 @@ export default function Products() {
                                     </Link>
                                 ))}
                             </div>
+
                         )}
                     </div>
 
@@ -298,7 +311,6 @@ export default function Products() {
                             </Button>
                         </div>
 
-                        {/* Select faqat active === 1 bo'lsa ko'rsatiladi */}
                         {active === 1 && (
                             <Select
                                 value={take}
