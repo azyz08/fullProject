@@ -7,7 +7,7 @@ import { inctance } from "../../utils/axios";
 import { useTranslation } from "react-i18next";
 import { Button, IconButton } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
-import { Select, Dropdown, Space, Typography } from "antd";
+import { Select, Dropdown, Space, Typography, Carousel } from "antd";
 import { DownOutlined } from '@ant-design/icons';
 import "../../utils/i18n";
 import { useCheckbox } from '../../components/checkbox';

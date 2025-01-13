@@ -77,12 +77,10 @@
 
             &.checked {
                 color: #2196F3;
-                /* Li element qizil bo'lishi */
             }
 
             &.checked::after {
                 background-color: #2196F3;
-                /* Chiziqni qizil qilish */
             }
         }
     }
