@@ -16,7 +16,7 @@ import Skeleton from '../../components/skeleton';
 export default function Products() {
     const [scrolled, setScrolled] = useState(false);
     const { t, i18n } = useTranslation();
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
     const [ctg, setCtg] = useState([]);
     const navigate = useNavigate();
     const [take, setTake] = useState(10);
@@ -65,33 +65,55 @@ export default function Products() {
         if (active === 1) return;
         setActive(active - 1);
     };
+    const categoryId = query.get('category');
+    const selectedColor = query.get('color');
+
+    // Sahifa yuklanganda checkedItem'ni URL parametriga mos ravishda o'rnatish
+    useEffect(() => {
+        setCheckedItem(categoryId);
+    }, [categoryId]);
 
     useEffect(() => {
         setLoading(true);
-        const categoryId = query.get('category');
-        const selectedColor = query.get('color');
-        const filterUrl = `/products/pagination?page=${active}&take=${take}${categoryId ? `&category=${categoryId}` : ''}${selectedColor ? `&color=${selectedColor}` : ''}`;
 
-        inctance.get(filterUrl).then((res) => {
-            setData(res?.data);
-            setLoading(false);
-        }).catch(() => {
-            setLoading(false);
-        });
-    }, [active, take, query]);
+        let filterUrl = categoryId
+            ? `/products/category/${categoryId}`
+            : '/products'; // Agar kategoriya tanlanmagan bo‘lsa, umumiy endpoint
+
+        inctance.get(filterUrl, {
+            params: { color: selectedColor, page: active, limit: take },
+        })
+            .then((res) => {
+                setData(res?.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [active, take, query, categoryId, selectedColor]);
 
     const handleCategoryClick = (id) => {
         if (checkedItem === id) {
-            setCheckedItem(null); // Kategoriyani o‘chirish
-            query.delete('category');
+            setCheckedItem(null);  // Kategoriyani olib tashlash
+            query.delete('category');  // URL'dan category ni olib tashlash
+            query.delete('color');  // Rangni ham URL'dan olib tashlash
         } else {
-            setCheckedItem(id); // Kategoriyani tanlash
-            query.set('category', id);
+            setCheckedItem(id);  // Yangi kategoriya tanlash
+            query.set('category', id);  // URL'ga kategoriya qo'shish
+            query.delete('color');  // Rangni URL'dan olib tashlash
         }
+
+        window.history.replaceState(null, '', `?${query.toString()}`);  // URL'ni yangilash
+    };
+
+    // Rangni filtr qilish
+    const handleColorFilter = (color) => {
+        if (!checkedItem) return;  // Agar kategoriya tanlanmagan bo'lsa, hech narsa qilmaydi
+        query.set('color', color);  // Rangni URL'ga qo'shish
         window.history.replaceState(null, '', `?${query.toString()}`);
     };
 
-
+    // Kategoriya ro'yxatini olish
     useEffect(() => {
         setLoadingCtg(true);
         inctance.get(`/category`).then((res) => {
@@ -103,10 +125,6 @@ export default function Products() {
     }, []);
 
     const totalPages = Math.ceil(data?.total / take);
-
-    const handleColorFilter = (color) => {
-        setQuery({ color });
-    };
 
     return (
         <>
@@ -148,70 +166,84 @@ export default function Products() {
 
                     <div className="left pb-[5px]">
                         <Dropdown
-                            className='FiltrDropdown'
+                            className={`FiltrDropdown ${!checkedItem ? 'disabled' : ''}`} // Disable when no category
+                            disabled={!checkedItem} // Disable the dropdown if no category is selected
                             menu={{
                                 items: [
                                     {
                                         key: '1',
                                         label: (
-                                            <div className='flex items-center justify-between gap-4'>
-                                                <p className='text-[17px]'>{t("white")}</p>
-                                                <div className='w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[white]'></div>
+                                            <div
+                                                className="flex items-center justify-between gap-4"
+                                                onClick={() => handleColorFilter('white')}
+                                            >
+                                                <p className="text-[17px]">{t("white")}</p>
+                                                <div className="w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[white]"></div>
                                             </div>
-                                        )
+                                        ),
                                     },
                                     {
                                         key: '2',
                                         label: (
-                                            <div className='flex items-center justify-between gap-4'>
-                                                <p className='text-[17px]'>{t("black")}</p>
-                                                <div className='w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[black]'></div>
+                                            <div
+                                                className="flex items-center justify-between gap-4"
+                                                onClick={() => handleColorFilter('black')}
+                                            >
+                                                <p className="text-[17px]">{t("black")}</p>
+                                                <div className="w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[black]"></div>
                                             </div>
-                                        )
+                                        ),
                                     },
                                     {
                                         key: '3',
                                         label: (
-                                            <div className='flex items-center justify-between gap-4'>
-                                                <p className='text-[17px]'>{t("blue")}</p>
-                                                <div className='w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[blue]'></div>
+                                            <div
+                                                className="flex items-center justify-between gap-4"
+                                                onClick={() => handleColorFilter('blue')}
+                                            >
+                                                <p className="text-[17px]">{t("blue")}</p>
+                                                <div className="w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[blue]"></div>
                                             </div>
-                                        )
+                                        ),
                                     },
                                     {
                                         key: '4',
                                         label: (
-                                            <div className='flex items-center justify-between gap-4'>
-                                                <p className='text-[17px]'>{t("yellow")}</p>
-                                                <div className='w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[yellow]'></div>
+                                            <div
+                                                className="flex items-center justify-between gap-4"
+                                                onClick={() => handleColorFilter('yellow')}
+                                            >
+                                                <p className="text-[17px]">{t("yellow")}</p>
+                                                <div className="w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[yellow]"></div>
                                             </div>
-                                        )
+                                        ),
                                     },
                                     {
                                         key: '5',
                                         label: (
-                                            <div className='flex items-center justify-between gap-4'>
-                                                <p className='text-[17px]'>{t("red")}</p>
-                                                <div className='w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[red]'></div>
+                                            <div
+                                                className="flex items-center justify-between gap-4"
+                                                onClick={() => handleColorFilter('red')}
+                                            >
+                                                <p className="text-[17px]">{t("red")}</p>
+                                                <div className="w-[30px] h-[30px] rounded-[50%] shadow-[3px_3px_4px_lightgray] bg-[red]"></div>
                                             </div>
-                                        )
+                                        ),
                                     },
                                 ],
-                                selectable: true,
-                                defaultSelectedKeys: ['3'],
                             }}
-
                         >
                             <Typography.Link>
-                                <Space className='space1 text-[18px] text-black duration-300 dark:text-white'>
-                                    <i class="fa-solid fa-sliders"></i>
+                                <Space className="space1 text-[18px] text-black duration-300 dark:text-white">
+                                    <i className="fa-solid fa-sliders"></i>
                                 </Space>
-                                <Space className='space2 text-[18px] text-black duration-300 dark:text-white'>
+                                <Space className="space2 text-[18px] text-black duration-300 dark:text-white">
                                     {t("filtr")}
-                                    <DownOutlined className='filtrIcon' />
+                                    <DownOutlined className="filtrIcon" />
                                 </Space>
                             </Typography.Link>
                         </Dropdown>
+
                     </div>
                 </div>
 
@@ -234,7 +266,7 @@ export default function Products() {
                             </div>
                         ) : (
                             <div className="products">
-                                {data?.data?.map((l) => (
+                                {data?.map((l) => (
                                     <Link key={l._id} to={`/read_more/${l._id}`}>
                                         <div className="product cursor-pointer shadow-[0_5px_10px_#c5c5c56b] dark:shadow-[0_4px_10px_#17171791] duration-300 hover:shadow-[0_6px_10px_#b0b0b06b] dark:hover:shadow-[0_4px_10px_#171717e0]">
                                             <div className="imageBox">
