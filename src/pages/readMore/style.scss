@@ -188,7 +188,7 @@
         display: flex;
         flex-direction: column;
         align-items: start;
-        gap: 30px;
+        gap: 25px;
 
         h1 {
             font-size: 25px;
@@ -199,7 +199,7 @@
             width: 100%;
             padding: 25px;
             border-radius: 20px;
-            border: 1px solid #d3d3d376;
+            border: 1px solid #a1a1a18c;
             display: flex;
             flex-direction: column;
             align-items: start;
@@ -210,6 +210,10 @@
                 align-items: center;
                 width: 100%;
                 justify-content: space-between;
+
+                .quantity {
+                    font-size: 19px;
+                }
             }
 
             .price {
@@ -256,7 +260,7 @@
             width: 100%;
             padding: 25px;
             border-radius: 20px;
-            border: 1px solid #d3d3d376;
+            border: 1px solid #a1a1a18c;
             display: flex;
             flex-direction: column;
             align-items: start;
