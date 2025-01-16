@@ -30,5 +30,11 @@
     "black": "Qora",
     "blue": "Ko'k",
     "yellow": "Sariq",
-    "red": "Qizil"
+    "red": "Qizil",
+    "left": "dona qoldi",
+    "add": "Savatga qo'shish",
+    "pay": "Qulay usulda xavfsiz toʻlov",
+    "karta": "Karta orqali va naqd pulda toʻlang",
+    "prev": "Oldingi",
+    "next": "Keyingi"
 }

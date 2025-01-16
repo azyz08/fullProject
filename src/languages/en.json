@@ -30,5 +30,11 @@
     "black": "Black",
     "blue": "Blue",
     "yellow": "Yellow",
-    "red": "Red"
+    "red": "Red",
+    "left": "pieces left",
+    "add": "Add to cart",
+    "pay": "Secure payment in a convenient way",
+    "karta": "Pay by card and cash",
+    "prev": "Previous",
+    "next": "Next"
 }

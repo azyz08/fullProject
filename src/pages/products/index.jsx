@@ -319,7 +319,7 @@ export default function Products() {
                                 disabled={loading || active === 1} // Yuklanayotgan paytda tugma ishlamaydi
                             >
                                 <ArrowLeftIcon strokeWidth={2} className="h-4 w-4 text-black duration-300 dark:text-white" />
-                                <p>Previous</p>
+                                <p>{t("prev")}</p>
                             </Button>
                             <div className="flex m-auto items-center gap-2">
                                 {Array.from({ length: totalPages }).map((_, index) => (
@@ -338,7 +338,7 @@ export default function Products() {
                                 onClick={next}
                                 disabled={loading || active === totalPages} // Yuklanayotgan paytda tugma ishlamaydi
                             >
-                                <p>Next</p>
+                                <p>{t("next")}</p>
                                 <ArrowRightIcon strokeWidth={2} className="h-4 w-4 text-black duration-300 dark:text-white" />
                             </Button>
                         </div>

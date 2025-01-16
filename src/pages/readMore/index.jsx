@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { inctance } from "../../utils/axios";
 import "../../utils/i18n";
 import { useTranslation } from "react-i18next";
@@ -8,6 +8,7 @@ import "./style.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@material-tailwind/react";
+import Skeleton from "../../components/skeleton";
 
 export default function ReadMore() {
     const { id } = useParams(); // URL'dan ID ni olish
@@ -64,13 +65,34 @@ export default function ReadMore() {
     };
 
     if (!product) {
-        return <p>Loading...</p>;
+        return (
+            <div className="read_more">
+                <div className="carousel-container">
+                    <div className="thumbnails">
+                        <div className="skeletonCard thumbnail"></div>
+                        <div className="skeletonCard thumbnail"></div>
+                        <div className="skeletonCard thumbnail"></div>
+                        <div className="skeletonCard thumbnail"></div>
+                        <div className="skeletonCard thumbnail"></div>
+                    </div>
+
+                    <div className="main-image">
+                        <div className="skeletonCard image-wrapper"></div>
+                    </div>
+                </div>
+
+                <div className="text">
+                    <div className="skeletonCard w-[100%] mt-1 m-auto h-[65px] rounded-[10px] skeletonH1"></div>
+                    <div className="skeletonCard w-[100%] mt-[1px] m-auto h-[230px] rounded-[10px] skeletonBox1"></div>
+                    <div className="skeletonCard w-[100%] mt-[5px] m-auto h-[150px] rounded-[10px] skeletonBox2"></div>
+                </div>
+            </div>
+        );
     }
 
     return (
         <div className="read_more">
             <div className="carousel-container">
-                {/* Agar faqat bitta rasm bo'lsa, thumbnail va arrowlarni yashirish */}
                 {productImages.length > 1 && (
                     <div className="thumbnails">
                         <div className={`floating-border index-${currentIndex}`}></div>
@@ -94,6 +116,7 @@ export default function ReadMore() {
                         </button>
                     )}
 
+                    <Link to={"#"} className="z-10 absolute top-[10px] right-[10px]"><i className="fa-regular fa-heart text-[25px] p-[8px] text-red-500 bg-[#a9a9a94f] rounded-[100%]"></i></Link>
                     <div className={`image-wrapper ${transitionState}`}>
                         <Image
                             className="centerImg cursor-pointer"
@@ -123,7 +146,7 @@ export default function ReadMore() {
                                 className="w-[50px] h-[20px] rounded-sm"
                             ></div>
                         </span>
-                        <p className="quantity">{product?.quantity} dona qoldi</p>
+                        <p className="quantity">{product?.quantity} {t("left")}</p>
                     </div>
                     <div className="price">
                         <p>
@@ -139,17 +162,16 @@ export default function ReadMore() {
                         </del>
                     </div>
                     <div className="add">
-                        <Button className="cart">Savatga qo'shish</Button>
+                        <Button className="cart">{t("add")}</Button>
                         <div className="basket flex items-center gap-1">
-                            <Button className="border-none p-0 bg-transparent shadow-none hover:shadow-none"><i className="fa-regular fa-heart text-[25px] p-[6px] text-black duration-300 dark:text-white"></i></Button>
                             <Button className="border-none p-0 bg-transparent shadow-none hover:shadow-none"><FontAwesomeIcon className="text-[25px] p-[6px] text-black duration-300 dark:text-white" icon={faShareNodes} /></Button>
                         </div>
                     </div>
                 </div>
 
                 <div className="box2">
-                    <h2>Qulay usulda xavfsiz toʻlov</h2>
-                    <p>Karta orqali va naqd pulda toʻlang</p>
+                    <h2>{t("pay")}</h2>
+                    <p>{t("karta")}</p>
                     <div className="imagesBox">
                         <img className="w-[55px] h-[25px] object-cover" src="/humo.png" alt="" />
                         <img className="w-[38px] h-[30px] object-cover" src="/mastercard.png" alt="" />
